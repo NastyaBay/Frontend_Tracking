@@ -1,0 +1,50 @@
+.blockStaticticPage{
+    width: 62.5rem;
+    padding: 0;
+    margin: 4.375rem;
+}
+
+.bodyStaticticPage{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headStaticticPage{
+    height: 4.5rem;
+    background-color: #CEDEFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headStaticticPage h1{
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.bodyBlockStaticticPage{
+    padding: 3rem 3.875rem;
+    padding-bottom: 2.25rem;
+}
+
+/*кнопка фильтрации даты*/
+.btnFilterDate{
+    background: transparent;
+    border: 0;
+    color: #2E538C;
+    margin-right: 0.4rem;
+}
+
+.btnFilterDate:hover{
+    background-color: #8EB4FF;
+    color: #2E538C;
+}
+.bodyBlockStaticticPage .btnFilterDate:active, .activeBtn{
+    background-color: #CEDEFF;
+    color: #2E538C;
+}
+
+.blockChart > *{
+    margin: 50px 0;
+}

@@ -1,0 +1,10 @@
+/* стиль подзаголовка */
+.h2-block{
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/*стиль контейнера*/
+.blockPages{
+    padding: 0
+}

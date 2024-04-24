@@ -1,0 +1,181 @@
+/* МОДАЛЬНОЕ ОКНО */
+/* убрать закругления */
+.modal-content {
+    border-radius: 0;
+}
+
+/* ширина модального окна */
+.modal {
+    --bs-modal-width: 50rem;
+}
+
+/* заголовок */
+.modal-title {
+    color: #2E538C;
+    font-size: 2rem;
+}
+/* стиль шапки блока окна */
+.modal-header {
+    padding: 1.625rem;
+    border-bottom: 0;
+}
+/* стиль основного блока окна */
+.modal-body {
+    background-color: #C7D9FD;
+    padding: 1.375rem;
+    height: 19.375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* стиль подвала блока окна */
+.modal-footer {
+    justify-content: space-between;
+    padding: 1.625rem;
+}
+/* стили кнопок в подвале */
+.modal-footer .btn1 {
+    background-color: #8EB4FF;
+    width: auto;
+    height: 2.1875rem;
+    margin: 0;
+}
+
+/* убрать тень у кноки закрытия */
+.btn-close:focus {
+    box-shadow: none;
+}
+
+/* ОКНО ПУБЛИКАЦИИ */
+.modal-body h3 {
+    font-size: 1.25rem;
+}
+
+.headForm .formHref {
+    width: 32.5rem;
+    margin-left: 1.875rem;
+}
+
+.headForm {
+    display: flex;
+}
+
+.blockImgQr {
+    background-color: #FFF;
+    width: 12.5rem;
+    height: 12.5rem;
+    padding: 0.625rem;
+    margin: 0 2rem;
+}
+
+.imgQr {
+    width: 11.25rem;
+}
+
+.btnBlockQr {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #8EB4FF;
+    border-radius: 0.625rem;
+}
+
+.btnBlock2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.imgBtn {
+    width: 2.25rem;
+}
+
+
+/* ОКНО ТЕКСТА */
+.bodyTextArea .formTextArea{
+    width: 100%;
+    border: 0;
+    border-radius: 0.625rem;
+    height: 100%;
+    resize: none;
+}
+.bodyTextArea .formTextArea::placeholder {
+	padding: 1rem;
+}
+
+
+/* ОКНО ССЫЛКИ */
+
+/*ОкноСсылка*/
+.headFormUrl .formHref {
+    width: 32.5rem;
+}
+
+.bodyUrl {
+    height: 17.75rem;
+}
+
+.headFormUrl .formText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6.25rem;
+}
+
+.footerUrl {
+    justify-content: flex-end;
+}
+
+.nav .nav-item {
+    margin-left: 20px;
+}
+
+.nav {
+    --bs-nav-link-color: #2E538C;
+}
+
+.nav-link {
+    font-size: 1.25rem;
+}
+
+/*стили модального окна ссылки -дизайн*/
+.designColor .form-control-color {
+    height: 1.75rem;
+    width: 3.625rem;
+    border-radius: 0.3125rem;
+    border: 0;
+
+}
+
+.designColor h3 {
+    font-size: 1rem;
+}
+
+.designColor {
+    display: flex;
+    width: 16rem;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.colorsBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 7rem;
+    justify-content: space-between;
+}
+
+.exempleDes {
+    background-color: #FFF;
+    height: 6.625rem;
+    padding: 0.8125rem ;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+/*текст внутри кнопки*/
+.headBtnPage{
+    margin: 0;
+}
+
+/* кнопка на страницу */
+.btnPage{
+    padding: 0 1.25rem;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+}
+
+/* кнопка на добавить страницу */
+.btnPageAdd{
+    margin-top: 0.625rem;
+}

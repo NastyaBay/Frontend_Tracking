@@ -1,0 +1,51 @@
+.blockStatictic{
+    width: 62.5rem;
+    padding: 0;
+    margin: 4.375rem;
+}
+
+.bodyStatictic{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headStatictic{
+    height: 4.5rem;
+    background-color: #CEDEFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.headStatictic h1{
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.bodyBlockStatictic{
+    padding: 0 3.875rem;
+    min-height: 40rem;
+}
+
+.bodyBlockStatictic > *{
+    margin: 50px 0;
+}
+
+/**/
+
+.bodyBlockStatictic h1{
+    font-size: 1.25rem;
+    margin: 1rem;
+}
+.blockBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.headStatictic img{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

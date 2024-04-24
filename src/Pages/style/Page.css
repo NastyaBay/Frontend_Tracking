@@ -1,0 +1,71 @@
+
+/* конструктор */
+.bodyConstr{
+    min-height: calc(100vh - 3.75rem);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* блок странички конструктора */
+.constructor{
+    background-color: #FFFFFF;
+    border-radius: 2.5rem;
+    border: 0.4375rem solid;
+    display: flex;
+    flex-direction: column;
+    padding-top: 7rem;
+}
+
+ /* мобильный вид */
+.phone{
+    height: 40rem;
+    width: 22.5rem;
+    margin-bottom: 6.25rem;
+}
+
+/*  вид на компьютере */
+.comp{
+    height: 48rem;
+    width: 75rem;
+    margin-bottom: 1.625rem;
+}
+
+.comp .blockUrl, .comp .blockText{
+    width: 37.5rem;
+}
+
+ /* отсуп у блоков */
+.constructor > *{
+    margin-bottom: 0.625rem;
+}
+
+/* блок кнопок добавления, публикации и перехода на компьютерную версию */
+.blockBtn{
+    height: 6.25rem;
+    width: 35.625rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/*кнопки боковые стили*/
+.blockBtn .btn1{
+    background-color: #8EB4FF;
+    width: 2.625rem;
+}
+
+/* размер иконок */
+.img1{
+    width: 2.25rem;
+}
+
+/* кнопки добавления блоков */
+.blockBtn .btn2{
+    background-color: #8EB4FF;
+    width: 9.875rem;
+    padding: 0;
+}
+

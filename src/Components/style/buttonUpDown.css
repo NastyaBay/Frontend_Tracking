@@ -1,0 +1,22 @@
+/* КНОПКА ПЕРЕМЕЩЕНИЯ БЛОКОВ */
+/* полкнопки перемещения*/
+.btnUpDown{
+    border: 0;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius:  0.3125rem;
+    background-color: #8EB4FF;
+}
+/* при наведении кнопка */
+.btns .btnUpDown:hover{
+    background-color: #C7D9FD;
+}
+
+/* кнопки перемещения блоков */
+.btns{
+    transform: rotate(90deg);
+}
+/* картинка внутри кнопки */
+.iconsUpDown{
+    width: 1.875rem;
+}

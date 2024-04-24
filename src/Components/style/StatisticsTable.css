@@ -1,0 +1,57 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    text-align: right;
+    padding: 0.5rem;
+    border: 1px solid #2E538C;
+}
+
+table td:first-child{
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table th {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    text-align: center;
+    background-color: #CEDEFF;
+    color: #222222;
+}
+
+.blockUser table th , .blockUser table td:first-child {
+    text-align: left;
+}
+
+
+/**/
+.my-custom-cell:first-child{
+    width: 18.75rem;
+}
+
+
+
+tr {
+    cursor: pointer;
+  }
+  
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.tableStyle{
+    width: 130px;
+}
+

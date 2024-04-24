@@ -1,0 +1,39 @@
+/*фоновое изображение*/
+body {
+	background-image: url("/back.png");
+}
+
+/* блок для авторизации */
+.blockLogin {
+	width: 26.25rem;
+	height: 31.25rem;
+	padding: 0;
+}
+
+/* заголовок Авторизация */
+.textLogin {
+	text-align: center;
+	margin: 0;
+	padding-top: 3rem;
+	color: #2e538c;
+	font-size: 2rem;
+	height: 5.4375rem;
+}
+
+
+/* расположение форм почты/пароля с заголовками */
+.formGroup {
+	padding-top: 1.125rem;
+	padding-bottom: 6.4375rem;
+}
+
+/*расположение блока форм*/
+.formGroups {
+	padding: 3rem 3.125rem;
+}
+
+
+/* расположение кнопки */
+.btnLogin{
+	margin: 0 3.75rem;
+}

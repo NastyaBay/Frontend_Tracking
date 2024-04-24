@@ -1,0 +1,45 @@
+/* Стили блоков и контейнеров */
+.blockForm{
+
+    width: 48.75rem;
+    margin: 4.375rem;
+    padding: 3.75rem 5rem;
+}
+
+.bodyForm{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blockForm > *:not(:first-child){
+    margin-top: 1.25rem;
+}
+
+.blockForm .formText{
+    border: 0;
+    border-bottom: 1px solid #4E7CC1;
+    width: 100%;
+}
+
+
+/* убрать прокрутку снизу */
+body{
+    overflow-x: hidden;
+}
+
+/* блок кнопок */
+.blockForm .h3-AddBlock{
+    font-size: 1.25rem;
+    margin-top: 1.875rem;
+}
+
+.btns-form .btn-form{
+    background-color: #8EB4FF;
+}
+.btns-form{
+    display: flex;
+    padding: 0;
+    justify-content: space-between
+}

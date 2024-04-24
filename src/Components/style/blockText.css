@@ -1,0 +1,16 @@
+/* блок текстовый */
+.blockText{
+    background: transparent;
+    position: relative;
+    width: 18.75rem;
+    min-height: 2rem;
+    padding: 1.25rem 0.75rem;
+}
+
+/* стили текста */
+.text{
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+

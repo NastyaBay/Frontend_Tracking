@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+   
+    font-weight: 400;
+    color: #222222;
+    cursor: default;
+}
+
+/*фоновое изображение и размеры по экрану*/
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/back2.png");
+	background-repeat: no-repeat;
+	background-position: center;
+    background-attachment: fixed;
+}
+
+@media (min-width: 0px) {
+	* {
+		font-size: 8px;
+	}
+}
+
+@media (min-width: 600px) {
+	* {
+		font-size: 14px;
+	}
+}
+
+/* для компьютеров */
+@media (min-width: 1920px) {
+	body {
+		background-size: 100%;
+	};
+    *{
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+	
+    *{
+        font-size: 14px;
+    }
+}
+

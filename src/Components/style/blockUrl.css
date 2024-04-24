@@ -1,0 +1,40 @@
+/* ссылочный блок */
+.blockUrl{
+    background-color: #C7D9FD;
+    width: 18.75rem;
+    height: 5rem;
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* стиль заголовка */
+.headUrl{
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+
+/* подзаголовок */
+.textUrl{
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+/* расположение иконки закрытия */
+.imgCross{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+.btns{
+    position: absolute;
+    right: 108%;
+}
+

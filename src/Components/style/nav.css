@@ -1,0 +1,19 @@
+/* блок шапки */
+.navibar{
+    width: 100vw;
+    background-color: #8EB4FF;
+    height: 3.75rem;
+}
+/* расположение блока ссылок */
+.navCont{
+    margin: 0 23.125rem;
+}
+/* стиль ссылки в шапке */
+.navCont .nav-link{
+    font-size: 1.125rem;
+    color: #222222;
+}
+/* ссылка вторая */
+.h2-analytics{
+    margin-left: 3.125rem;
+}

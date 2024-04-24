@@ -1,0 +1,9 @@
+
+/* стили обводки кнопки */
+.btnPageBorder{
+    background-color: #FFFFFF;
+    border-radius: 0;
+    border-color: #4E7CC1;
+    height: 3.75rem;
+    width: 38.75rem;
+}

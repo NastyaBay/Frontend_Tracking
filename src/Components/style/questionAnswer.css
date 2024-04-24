@@ -1,0 +1,13 @@
+.blockForm .formAnswer{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px dashed #4E7CC1;
+}
+
+.borderForm .btns{
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    margin: 0;
+}

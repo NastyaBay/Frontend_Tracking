@@ -1,0 +1,50 @@
+/* заголовок */
+.textAcc {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	color: #2e538c;
+	font-size: 2rem;
+}
+
+/* расположение и размеры блока */
+.blockAcc{
+    width: 48.75rem;
+    padding: 3.75rem 5rem;
+    margin: 4.375rem 0;
+
+}
+
+/* расположение верхней части */
+.headBlockAcc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+}
+
+/* подзаголовок страница/формы */
+.h3-acc{
+    font-size: 1rem;
+    text-decoration: underline;
+    margin-bottom: 1.875rem;
+}
+
+/* расположение кнопки аналитики*/
+.btn-analytics{
+    margin-top: 2.5rem;
+    margin-bottom: 1.5625rem;
+}
+
+/* расположение подзаголовка форм*/
+.h3-forms{
+    margin-top: 4.375rem;
+}
+.block-pub{
+    margin-top: 2.5rem;
+}
+
+/*убрать прокрутку внизу*/
+body{
+    overflow-x: hidden;
+}

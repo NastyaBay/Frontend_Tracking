@@ -1,0 +1,39 @@
+/* блок */
+.borderForm{
+    border: 1px solid #4E7CC1;
+    width: 38.75rem;
+    min-height: 9.125rem;
+    padding: 2.5rem 3.125rem;
+    position: relative;
+}
+.formHead{
+    border: 0;
+    border-bottom: 1px solid #4E7CC1;
+    padding-left: 0;
+    width: 100%;
+}
+.borderForm > *:not(:first-child){
+    margin-top: 1.25rem;
+    padding-left: 0;
+}
+
+/* расположение иконки закрытия */
+.imgCrossForm{
+    position: absolute;
+    right: 0;
+    top: 0; 
+    margin: 0 !important;
+}
+
+/* шрифты */
+.textFont{
+    font-size: 0.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    height: 2rem;
+}
+.headFont{
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}

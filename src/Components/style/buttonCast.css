@@ -1,0 +1,30 @@
+/* КНОПКИ */
+/* стиль кнопки */
+.btn {
+	background-color: #C7D9FD;
+	border-radius: 0.625rem;
+	color: #222222;
+	height: 2.75rem;
+	width: 12.5rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
+
+/*убрвть обводку у кнопок*/
+.btnCast{
+	border: 0;
+}
+
+/* при наведении на кнопку */
+.btn:hover {
+	background-color: #8EB4FF;
+	color: #222222;
+}
+
+/* при нажатии на кнопку */
+.btn:active {
+	--bs-btn-active-bg: #C7D9FD;
+	--bs-btn-active-color: #222222;
+}
