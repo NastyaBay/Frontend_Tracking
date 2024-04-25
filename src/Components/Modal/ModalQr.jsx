@@ -28,13 +28,20 @@ const ModalQr = ({ show, handleClose }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Публикация</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <div className='headForm'>
-                        <h3>Ссылка</h3>
-                        <FormCast className='formHref' onChange={handleChange} value={url} />
+                <Modal.Body className='blockEdit'> 
+                    <div className='blockEditName'>
+                    <div className='blockFormEditName'>
+                        <h3>Название проекта</h3>
+                        <FormCast className='formHrefEdit' onChange={handleChange} value={url} />
                     </div>
-                    <div className='headForm headForm2'>
+                    <div className='blockFormEditName'>
+                        <h3>Ссылка</h3>
+                        <FormCast className='formHrefEdit' value={'http://ссылка'} />
+                    </div>
+                    </div>
+                    <div className='headForm3 '>
                         <h3>QR-код</h3>
+                        <div className='headForm2'>
                         <Container className='blockImgQr'>
                             <img src='/qr.png' className='imgQr'></img>
                         </Container>
@@ -42,6 +49,7 @@ const ModalQr = ({ show, handleClose }) => {
                             <ButtonCast className='btnBlockQr' name={<img className='imgBtn' src='/icons/loading.svg'></img>} />
                             <ButtonCast className='btnBlockQr' name={<img className='imgBtn' src='/icons/share.svg'></img>} />
                             <ButtonCast className='btnBlockQr' name={<img className='imgBtn' src='/icons/save.svg'></img>} />
+                        </div>
                         </div>
                     </div>
                 </Modal.Body>

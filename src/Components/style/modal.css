@@ -173,9 +173,30 @@
 
 
 
-
-
-
-
-
-
+/*для публикации*/
+.blockEdit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.blockEditName{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.blockFormEditName{
+    display: flex;
+    flex-direction: column;
+}
+.formHrefEdit{
+    margin-top: 0.7rem;
+}
+.headForm2 {
+    display: flex;
+}
+.headForm3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}

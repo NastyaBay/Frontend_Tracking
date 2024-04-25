@@ -34,8 +34,13 @@
     border: 0;
     color: #2E538C;
     margin-right: 0.4rem;
+    height: 2rem;
+    width: auto;
 }
 
+.blockBtnDate{
+    display: flex;
+}
 .btnFilterDate:hover{
     background-color: #8EB4FF;
     color: #2E538C;
@@ -43,6 +48,7 @@
 .bodyBlockStaticticPage .btnFilterDate:active, .activeBtn{
     background-color: #CEDEFF;
     color: #2E538C;
+    border-radius: 5px;
 }
 
 .blockChart > *{

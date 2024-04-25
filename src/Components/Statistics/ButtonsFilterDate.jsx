@@ -10,7 +10,7 @@ const ButtonsFilterDate = () => {
     }
     return (
         <>
-            <div>
+            <div className="blockBtnDate"> 
                 <Button className={`btnFilterDate ${activeBtn === 'day' ? 'activeBtn' : ''}`}
                     onClick={() => handleActiveBtn('day')}>
                     По дням
