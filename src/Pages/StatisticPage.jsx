@@ -9,13 +9,35 @@ import StatisticsTable from "../Components/Statistics/StatisticsTable";
 import dataTable from '../Components/Statistics/DataTable.json'
 import { ColumnsTablePage, ColumnsTableUrls } from '../Components/Statistics/ColumnsTable'
 
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
+
+import { authUser } from '../Components/Account/backend/LoginBack';
+import { useNavigate, useParams } from 'react-router-dom';
 /*Статистика страницы */
 const StatisticPage = () => {
+    const navigate = useNavigate();
+    const pageUrl = useParams();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
     return (
         <>
             <div>
-                <Navibar name1='Конструктор' name2='Статистика' href1='/page' />
+                <Navibar name1='Конструктор' name2='Статистика' href1={`/page/${pageUrl.pageUrl}`} />
 
                 <Container className="bodyStaticticPage">
                     <ContainerCast className='blockStaticticPage'>

@@ -3,9 +3,26 @@ import Modal from 'react-bootstrap/Modal';
 import '../style/modal.css';
 import ButtonCast from '../OftenUsed/ButtonCast';
 import { Form } from 'react-bootstrap';
+import { useState } from 'react';
 
 // модальное окно блока ссылки
 const ModalText = ({ show, handleClose, handleSave }) => {
+    const [content, setContent] = useState({ type: "text", key: generateKey() });
+    const [dataContent, setDataContent] = useState({});
+    const dataChange = (e) => {
+        const { name, value } = e.target
+        setDataContent(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleSaveContent = () => {
+        const updateContent = { ...content, data: dataContent }
+        handleSave(updateContent);
+        setContent({ type: "text", key: generateKey() })
+    };
+
     return (
         <>
             <Modal
@@ -20,10 +37,18 @@ const ModalText = ({ show, handleClose, handleSave }) => {
                     <Modal.Title>Текст</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='bodyTextArea'>
-                    <Form.Control as="textarea" rows={3} className='formTextArea' placeholder='Введите текст' />
+                    <Form.Control
+                        as="textarea"
+                        rows={3}
+                        className='formTextArea'
+                        placeholder='Введите текст'
+                        name='text'
+                        defaultValue={''}
+                        onChange={(e) => dataChange(e)}
+                    />
                 </Modal.Body>
                 <Modal.Footer className='footerUrl'>
-                    <ButtonCast onClick={handleSave} name='Сохранить' className='btn1' />
+                    <ButtonCast onClick={handleSaveContent} name='Сохранить' className='btn1' />
                 </Modal.Footer>
             </Modal>
         </>
@@ -31,3 +56,7 @@ const ModalText = ({ show, handleClose, handleSave }) => {
 }
 
 export default ModalText
+
+function generateKey() {
+    return Math.random().toString(36);
+}

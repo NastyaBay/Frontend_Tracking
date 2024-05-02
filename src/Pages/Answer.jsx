@@ -9,11 +9,32 @@ import AnswerExpanded from "../Components/Forms/AnswerExpanded";
 
 import ModalQr from '../Components/Modal/ModalQr'
 
+import { authUser } from '../Components/Account/backend/LoginBack';
+
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 /*ответы на форму */
 const Answer = () => {
     const [showQr, setShowQr] = useState(false);
     const handleCloseQr = () => setShowQr(false);
     const handleShowQr = () => setShowQr(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>

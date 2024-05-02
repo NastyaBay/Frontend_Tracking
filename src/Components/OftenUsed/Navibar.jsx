@@ -1,8 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import '../style/nav.css'
 
 /*шапка конструктора и форм */
 const Navibar = (props) => {
+    const navigate = useNavigate();
+
+    const handleSavePage = () => {
+        props.savePage()
+        navigate('/account')
+    }
+
     return (
         <>
             <Navbar className="navibar">
@@ -14,7 +22,7 @@ const Navibar = (props) => {
                     </Nav>
                     <Nav>
                         <img src='/icons/avatar.svg'></img>
-                        <Nav.Link href='/account'>Мой профиль</Nav.Link>
+                        <Nav.Link onClick={handleSavePage}>Мой профиль</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

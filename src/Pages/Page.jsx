@@ -1,5 +1,5 @@
 import './style/Page.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navibar from "../Components/OftenUsed/Navibar";
 import ContainerCast from "../Components/OftenUsed/ContainerCast";
 import ButtonCast from '../Components/OftenUsed/ButtonCast';
@@ -9,34 +9,79 @@ import BlockUrl from '../Components/Constructor/BlockUrl'
 import BlockText from '../Components/Constructor/BlockText';
 import ModalText from '../Components/Modal/ModalText';
 
+import { authUser } from '../Components/Account/backend/LoginBack';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getPage, updatePage } from '../Components/Account/backend/PagesBack';
+
 /*конструктор страниц */
 const Page = () => {
+    const navigate = useNavigate();
+    const pageUrl = useParams();
+    const [pageData, setPageData] = useState({});
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            } else {
+                const response = await getPage(pageUrl.pageUrl)
+                setPageData(response)
+                setBlocks(response.json_data || [])
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    /*модальное окно публикации*/
     const [showQr, setShowQr] = useState(false);
     const handleCloseQr = () => setShowQr(false);
     const handleShowQr = () => setShowQr(true);
 
+    /*модальное окно ссылочного блока*/
     const [showUrl, setShowUrl] = useState(false);
     const handleCloseUrl = () => setShowUrl(false);
     const handleShowUrl = () => setShowUrl(true);
-    const handleSaveUrl = () => {
-        addBlock('url');
+    const handleSaveUrl = (data) => {
+        addBlock(data);
         setShowUrl(false);
     }
 
+    /*модальное окно текстового блока*/
     const [showText, setShowText] = useState(false);
     const handleCloseText = () => setShowText(false);
     const handleShowText = () => setShowText(true);
-    const handleSaveText = () => {
-        addBlock('text');
+    const handleSaveText = (data) => {
+        addBlock(data);
         setShowText(false);
     }
 
+    /*блоки в конструкторе */
+    const [blocks, setBlocks] = useState([]);
 
-    const [blocks, setBlocks] = useState([{ type: 'url', key: generateKey() }]);
-    const addBlock = (selectedType) => {
-        setBlocks(prevBlocks => [...prevBlocks, { type: selectedType, key: generateKey() }]);
+    const addBlock = async (dataContent) => {
+        setBlocks(prevBlocks => {
+            const newBlocks = [...prevBlocks, dataContent];
+            updatePage(pageUrl.pageUrl, pageData, newBlocks); 
+            return newBlocks;
+        });
     };
 
+    const saveNewPage = async (data=pageData, json=blocks) => {
+        try {
+            const response = await updatePage(pageUrl.pageUrl, data, json);
+            setPageData(response)
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    /* перемещение блоков вверх */
     const moveBlockUp = (index) => {
         if (index === 0) return; // Нельзя переместить блок выше, если он находится на первом месте
 
@@ -44,7 +89,7 @@ const Page = () => {
         [newBlocks[index - 1], newBlocks[index]] = [newBlocks[index], newBlocks[index - 1]];
         setBlocks(newBlocks);
     };
-
+    /* перемещение блоков вниз */
     const moveBlockDown = (index) => {
         if (index === blocks.length - 1) return; // Нельзя переместить блок ниже, если он находится на последнем месте
 
@@ -52,11 +97,15 @@ const Page = () => {
         [newBlocks[index], newBlocks[index + 1]] = [newBlocks[index + 1], newBlocks[index]];
         setBlocks(newBlocks);
     };
-
+    /* удаление блока */
     const removeBlock = (key) => {
-        setBlocks(prevBlocks => prevBlocks.filter(block => block.key !== key));
+        setBlocks(prevBlocks => {
+            const newBlocks = prevBlocks.filter(block => block.key !== key)
+            updatePage(pageUrl.pageUrl, pageData, newBlocks);
+            return newBlocks
+        });
     };
-
+    /* переключение на версию компа/телефона */
     const [display, setDisplay] = useState({ className: 'constructor phone', url: '/icons/comp.svg' });
 
     const toggleDisplay = () => {
@@ -67,15 +116,15 @@ const Page = () => {
 
     return (
         <>
-            <Navibar name1='Конструктор' name2='Статистика' href2='/page/statistic' />
+            <Navibar name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage}/>
             <div className='bodyConstr'>
                 <ContainerCast className={display.className}>
                     {blocks.map((block, index) => (
                         <div key={block.key}>
                             {block.type === 'text' ? (
-                                <BlockText moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                <BlockText data={block.data} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             ) : (
-                                <BlockUrl moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                <BlockUrl  data={block.data} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             )}
                         </div>
                     ))}
@@ -88,7 +137,7 @@ const Page = () => {
                 </ContainerCast>
             </div>
 
-            <ModalQr show={showQr} handleClose={handleCloseQr} />
+            <ModalQr show={showQr} handleClose={handleCloseQr} updatePage={saveNewPage} data={pageData}/>
             <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} />
             <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} />
 
@@ -97,6 +146,3 @@ const Page = () => {
 }
 
 export default Page
-function generateKey() {
-    return Math.random().toString(36);
-}

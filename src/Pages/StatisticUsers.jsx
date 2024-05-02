@@ -1,6 +1,6 @@
 import "./style/StatisticUsers.css"
 
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 
 import Navibar from "../Components/OftenUsed/Navibar";
 import { Container } from 'react-bootstrap';
@@ -10,8 +10,28 @@ import StatisticsTable from "../Components/Statistics/StatisticsTable";
 import dataTable from '../Components/Statistics/DataTable.json'
 import { ColumnsTableUsers } from '../Components/Statistics/ColumnsTable'
 
+import { authUser } from '../Components/Account/backend/LoginBack';
+import { useNavigate } from 'react-router-dom';
+
 /*статистика пользователей */
 const StatisticUsers = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <>
             <div>

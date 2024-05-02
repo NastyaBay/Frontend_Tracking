@@ -1,5 +1,5 @@
 import "./style/StatisticUser.css"
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { Container } from 'react-bootstrap';
 import ContainerCast from '../Components/OftenUsed/ContainerCast';
 import Navibar from "../Components/OftenUsed/Navibar";
@@ -8,8 +8,29 @@ import dataUserPages from "../Components/Statistics/DataUserPages.json"
 import dataTableUser from "../Components/Statistics/DataTableUser.json"
 import dataForm from "../Components/Statistics/DataForm.json"
 
+import { authUser } from '../Components/Account/backend/LoginBack';
+import { useNavigate } from 'react-router-dom';
+
 /*статистика пользователя */
 const StatisticUser = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    
     const handleCrossClick = () => {
         if (typeof window !== 'undefined') {
             window.location.href = '/statistic';

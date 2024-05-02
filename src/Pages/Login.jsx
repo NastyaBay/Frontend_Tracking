@@ -1,35 +1,47 @@
 import './style/Login.css'
 
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Form } from "react-bootstrap";
 import ButtonCast from '../Components/OftenUsed/ButtonCast'
 import FormCast from '../Components/OftenUsed/FormCast'
 import ContainerCast from "../Components/OftenUsed/ContainerCast";
+import { loginUser, authUser } from '../Components/Account/backend/LoginBack';
 
 // страница с авторизацией
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (response) {
+                navigate("/account")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/auth/jwt/create/', {
-                email: email,
-                password: password
-            });
-            const token = response.data.token; // Предполагаем, что сервер возвращает токен
-            console.log(token)
+        e.preventDefault()
 
-            localStorage.setItem('token', token); // Сохраняем токен в локальное хранилище
-            // Другие действия после успешной аутентификации
+        try {
+            await loginUser(password, email)
+            navigate("/account")
         } catch (error) {
-            setError('Неверные учетные данные. Попробуйте еще раз.');
+            console.error(error);
+            alert("Неправильная почта или пароль")
         }
     };
-    
+
     return (
         <>
             <ContainerCast className="blockLogin ">
@@ -37,12 +49,12 @@ const Login = () => {
                 <Form className="formGroups" onSubmit={handleLogin}>
                     <Form.Group>
                         <Form.Label >Почта</Form.Label>
-                        <FormCast type='email' placeholder='email@gmail.com' value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <FormCast type='email' placeholder='email@gmail.com' defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group className="formGroup">
                         <Form.Label >Пароль</Form.Label>
-                        <FormCast type='password' placeholder='*********' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <FormCast type='password' placeholder='*********' defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
                     <ButtonCast name='Войти' type="submit" className='btnLogin' />
                 </Form>

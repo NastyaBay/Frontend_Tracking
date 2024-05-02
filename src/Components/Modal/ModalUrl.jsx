@@ -1,4 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
 
 import '../style/modal.css'
 import ButtonCast from '../OftenUsed/ButtonCast'
@@ -8,6 +9,21 @@ import ModalUrlCont from './ModalUrlCont';
 import ModalUrlDes from './ModalUrlDes';
 
 const ModalUrl = ({ show, handleClose, handleSave }) => {
+    const [content, setContent] = useState({ type: "url", key: generateKey() });
+    const [dataContent, setDataContent] = useState({});
+    const dataChange = (e) => {
+        const { name, value } = e.target
+        setDataContent(prevData => ({
+            ...prevData,
+            [name]: value
+        }))
+    }
+    const handleSaveContent = () => {
+        const updateContent = { ...content, data: dataContent }
+        handleSave(updateContent);
+        setDataContent({});
+        setContent({ type: "url", key: generateKey() });
+    }
     return (
         <>
             <Modal
@@ -26,14 +42,14 @@ const ModalUrl = ({ show, handleClose, handleSave }) => {
                     id="uncontrolled-tab-example"
                 >
                     <Tab eventKey="content" title="Контент">
-                        <ModalUrlCont />
+                        <ModalUrlCont dataChange={dataChange} />
                     </Tab>
                     <Tab eventKey="design" title="Дизайн">
-                        <ModalUrlDes />
+                        <ModalUrlDes dataChange={dataChange} />
                     </Tab>
                 </Tabs>
                 <Modal.Footer className='footerUrl'>
-                    <ButtonCast onClick={handleSave} name='Сохранить' className='btn1' />
+                    <ButtonCast onClick={handleSaveContent} name='Сохранить' className='btn1' />
                 </Modal.Footer>
             </Modal>
 
@@ -42,3 +58,6 @@ const ModalUrl = ({ show, handleClose, handleSave }) => {
 }
 
 export default ModalUrl
+function generateKey() {
+    return Math.random().toString(36);
+}

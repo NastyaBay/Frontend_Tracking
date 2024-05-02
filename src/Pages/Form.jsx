@@ -11,6 +11,11 @@ import QuestionAnswer from '../Components/Forms/QuestionAnswer';
 import QuestionCheckboxRadio from '../Components/Forms/QuestionCheckboxRadio';
 import ButtonCast from '../Components/OftenUsed/ButtonCast';
 
+import { authUser } from '../Components/Account/backend/LoginBack';
+
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 /* Конструктор формы обратной связи*/
 const Form = () => {
 
@@ -19,6 +24,23 @@ const Form = () => {
     const handleShowQr = () => setShowQr(true);
 
     const [questions, setQuestions] = useState([])
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authenticated()
+    }, [])
+
+    const authenticated = async () => {
+        try {
+            const response = await authUser()
+            if (!response) {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const addQuestion = (type) => {
         setQuestions(prevQuestion => [...prevQuestion, { type: type, key: generateKey() }])
