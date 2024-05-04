@@ -13,8 +13,6 @@ import { authUser } from '../Components/Account/backend/LoginBack';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getPage, updatePage } from '../Components/Account/backend/PagesBack';
 
-
-import ButtonUpDown from '../Components/OftenUsed/ButtonUpDown';
 /*конструктор страниц */
 const Page = () => {
     const navigate = useNavigate();
@@ -56,12 +54,25 @@ const Page = () => {
 
     /*модальное окно текстового блока*/
     const [showText, setShowText] = useState(false);
-    const handleCloseText = () => setShowText(false);
+
+    const handleCloseText = () => {
+        setShowText(false)
+        setSelectedBlockIndex('');
+        setSelectedBlock({});
+    };
     const handleShowText = () => setShowText(true);
     const handleSaveText = (data) => {
+        if(selectedBlockIndex !== ''){
+            console.log(blocks[selectedBlockIndex]);
+            blocks[selectedBlockIndex].data.text = data.data.text
+        } else{
         addBlock(data);
+        }
         setShowText(false);
+        setSelectedBlockIndex('');
+        setSelectedBlock({});
     }
+
 
     /*блоки в конструкторе */
     const [blocks, setBlocks] = useState([]);
@@ -115,7 +126,16 @@ const Page = () => {
         const newUrl = display.url === '/icons/comp.svg' ? '/icons/phone.svg' : '/icons/comp.svg';
         setDisplay({ className: newClassName, url: newUrl });
     };
+    /*СТООООП */
+    const [selectedBlockIndex, setSelectedBlockIndex] = useState('');
+    const [selectedBlock, setSelectedBlock] = useState({});
 
+// Функция для открытия модального окна с данными выбранного блока текста
+    const openTextBlockModal = (index) => {
+        setSelectedBlockIndex(index);
+        setSelectedBlock(blocks[index]);
+        setShowText(true); // Открываем модальное окно
+    };
     return (
         <>
             <Navibar name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage}/>
@@ -123,9 +143,9 @@ const Page = () => {
                 <ContainerCast className={` ${display.className}`}>
                 <div className='phoneComp'>
                     {blocks.map((block, index) => (
-                        <div key={block.key}>
+                        <div key={block.key} >
                             {block.type === 'text' ? (
-                                <BlockText data={block.data} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                <BlockText data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             ) : (
                                 <BlockUrl  data={block.data} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             )}
@@ -143,7 +163,7 @@ const Page = () => {
 
             <ModalQr show={showQr} handleClose={handleCloseQr} updatePage={saveNewPage} data={pageData}/>
             <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} />
-            <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} />
+            <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex}/>
 
         </>
     )

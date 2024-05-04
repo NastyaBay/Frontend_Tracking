@@ -3,12 +3,13 @@ import Modal from 'react-bootstrap/Modal';
 import '../style/modal.css';
 import ButtonCast from '../OftenUsed/ButtonCast';
 import { Form } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // модальное окно блока ссылки
-const ModalText = ({ show, handleClose, handleSave }) => {
+const ModalText = ({ show, handleClose, handleSave, selectedBlock, selectedBlockIndex }) => {
     const [content, setContent] = useState({ type: "text", key: generateKey() });
     const [dataContent, setDataContent] = useState({});
+
     const dataChange = (e) => {
         const { name, value } = e.target
         setDataContent(prevData => ({
@@ -18,10 +19,18 @@ const ModalText = ({ show, handleClose, handleSave }) => {
     };
 
     const handleSaveContent = () => {
-        const updateContent = { ...content, data: dataContent }
+        const updateContent = { ...content, data: dataContent ? dataContent : {} }
         handleSave(updateContent);
         setContent({ type: "text", key: generateKey() })
     };
+
+    /*СТООООП */
+
+    useEffect(() => {
+        if (show && selectedBlockIndex !== null) {
+            setDataContent(selectedBlock.data);
+        }
+    }, [show, selectedBlock, selectedBlockIndex]);
 
     return (
         <>
@@ -43,7 +52,7 @@ const ModalText = ({ show, handleClose, handleSave }) => {
                         className='formTextArea'
                         placeholder='Введите текст'
                         name='text'
-                        defaultValue={''}
+                        defaultValue={'' || selectedBlock.data?.text}
                         onChange={(e) => dataChange(e)}
                     />
                 </Modal.Body>

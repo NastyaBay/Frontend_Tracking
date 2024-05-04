@@ -11,6 +11,7 @@ import ModalUrlDes from './ModalUrlDes';
 const ModalUrl = ({ show, handleClose, handleSave }) => {
     const [content, setContent] = useState({ type: "url", key: generateKey() });
     const [dataContent, setDataContent] = useState({});
+    
     const dataChange = (e) => {
         const { name, value } = e.target
         setDataContent(prevData => ({
