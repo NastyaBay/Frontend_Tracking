@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 0;
 }
 
 /* стиль заголовка */
@@ -34,7 +35,6 @@
     right: 0;
     top: 0;
 }
-
 
 .btns{
     position: absolute;

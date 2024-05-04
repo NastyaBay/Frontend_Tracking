@@ -3,8 +3,9 @@
     background: transparent;
     position: relative;
     width: 18.75rem;
-    min-height: 2rem;
+    min-height: 4rem;
     padding: 1.25rem 0.75rem;
+    margin: 0;
 }
 
 /* стили текста */

@@ -15,12 +15,12 @@
     border: 0.4375rem solid;
     display: flex;
     flex-direction: column;
-    padding-top: 7rem;
+    padding: 1.5rem 1.5rem;
 }
 
  /* мобильный вид */
 .phone{
-    min-height: 40rem;
+    height: 40rem;
     width: 22.5rem;
     margin-bottom: 6.25rem;
     margin-top: 1rem;
@@ -28,10 +28,13 @@
 
 /*  вид на компьютере */
 .comp{
-    min-height: 48rem;
+    height: 48rem;
     width: 75rem;
     margin-bottom: 1.625rem;
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .comp .blockUrl, .comp .blockText{
@@ -72,3 +75,24 @@
 }
 
 /*прокрутка блоков*/
+
+
+.phone  .phoneComp{
+    height: 40rem;
+    width: 25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.comp  .phoneComp{
+    height: 48rem;
+    width: 42rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.comp .btns-up-down-group{
+    right: -10%;
+}
+.phoneComp > *{
+    margin-top: 0.625rem;
+}

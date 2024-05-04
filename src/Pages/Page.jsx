@@ -13,6 +13,8 @@ import { authUser } from '../Components/Account/backend/LoginBack';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getPage, updatePage } from '../Components/Account/backend/PagesBack';
 
+
+import ButtonUpDown from '../Components/OftenUsed/ButtonUpDown';
 /*конструктор страниц */
 const Page = () => {
     const navigate = useNavigate();
@@ -118,7 +120,8 @@ const Page = () => {
         <>
             <Navibar name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage}/>
             <div className='bodyConstr'>
-                <ContainerCast className={`phoneComp ${display.className}`}>
+                <ContainerCast className={` ${display.className}`}>
+                <div className='phoneComp'>
                     {blocks.map((block, index) => (
                         <div key={block.key}>
                             {block.type === 'text' ? (
@@ -128,6 +131,7 @@ const Page = () => {
                             )}
                         </div>
                     ))}
+                </div>
                 </ContainerCast>
                 <ContainerCast className="blockBtn">
                     <ButtonCast onClick={handleShowQr} className='btn1' name={<img className='img1' src='/icons/qr_code.svg'></img>} />
