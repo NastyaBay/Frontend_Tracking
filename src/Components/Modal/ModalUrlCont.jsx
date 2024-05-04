@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 
 // контент модального окна ссылки
-const ModalUrlCont = ({dataChange}) => {
-
+const ModalUrlCont = ({dataChange, selectedBlock}) => {
 
 
     return (
@@ -18,14 +17,14 @@ const ModalUrlCont = ({dataChange}) => {
                             className='formHref'
                             placeholder='Заголовок'
                             name='title'
-                            defaultValue={''}
+                            defaultValue={'' || selectedBlock.data?.title}
                             onChange={(e)=>dataChange(e)}
                         />
                         <FormCast
                             className='formHref'
                             placeholder='Основной текст'
                             name='text'
-                            defaultValue={''}
+                            defaultValue={'' || selectedBlock.data?.text}
                             onChange={(e)=>dataChange(e)}
                         />
                     </div>
@@ -35,7 +34,7 @@ const ModalUrlCont = ({dataChange}) => {
                     <FormCast
                         className='formHref'
                         name='url'
-                        defaultValue={''}
+                        defaultValue={'' || selectedBlock.data?.url}
                         onChange={(e)=>dataChange(e)}
                     />
                 </Container>

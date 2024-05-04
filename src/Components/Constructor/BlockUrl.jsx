@@ -3,13 +3,14 @@ import '../style/blockUrl.css'
 import ButtonUpDown from '../OftenUsed/ButtonUpDown'
 
 // блок ссылочный
-const BlockUrl = ({ titleColor, textColor, bgColor, moveBlockDown, moveBlockUp, removeBlock, data, defaultText, defaultTitle}) => {
+const BlockUrl = ({ titleColor, textColor, bgColor, moveBlockDown, moveBlockUp, removeBlock, data, defaultText, defaultTitle, onClick}) => {
   const handleContainerClick = (event) => {
-/*     if (event.target.tagName === 'BUTTON' || event.target.tagName === 'IMG') {
+    if (event.target.tagName === 'BUTTON' || event.target.tagName === 'IMG') {
         event.stopPropagation();
     } else {
-        onClick(); */
+        onClick();
     }
+  }
   return (
     <>
       <Container className='blockUrl' style={{ backgroundColor: data?.colorBg || bgColor }} onClick={handleContainerClick}>

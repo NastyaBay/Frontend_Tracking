@@ -18,7 +18,7 @@ const BlockText = ({ moveBlockDown, moveBlockUp, removeBlock, data, onClick }) =
             <Container className='blockText' onClick={handleContainerClick}>
                 <ButtonUpDown moveBlockUp={moveBlockUp} moveBlockDown={moveBlockDown} />
                 <img className='imgCross' src='/icons/cross.svg' onClick={removeBlock}></img>
-                <h1 className='text'>{data.text}</h1>
+                <h1 className='text'>{data?.text}</h1>
             </Container>
         </>
     )

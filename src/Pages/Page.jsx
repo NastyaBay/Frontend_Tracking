@@ -1,5 +1,6 @@
 import './style/Page.css'
 import { useState, useEffect } from "react";
+import { Button } from 'react-bootstrap';
 import Navibar from "../Components/OftenUsed/Navibar";
 import ContainerCast from "../Components/OftenUsed/ContainerCast";
 import ButtonCast from '../Components/OftenUsed/ButtonCast';
@@ -45,11 +46,23 @@ const Page = () => {
 
     /*модальное окно ссылочного блока*/
     const [showUrl, setShowUrl] = useState(false);
-    const handleCloseUrl = () => setShowUrl(false);
-    const handleShowUrl = () => setShowUrl(true);
+    const handleCloseUrl = () => {
+        setShowUrl(false)
+    };
+    const handleShowUrl = () => {
+        setShowUrl(true)
+        setSelectedBlockIndex('');
+        setSelectedBlock({});
+    };
     const handleSaveUrl = (data) => {
+        if(selectedBlockIndex !== ''){
+            blocks[selectedBlockIndex].data = data.data
+        } else{
         addBlock(data);
+        }
         setShowUrl(false);
+        setSelectedBlockIndex('');
+        setSelectedBlock({});
     }
 
     /*модальное окно текстового блока*/
@@ -64,7 +77,7 @@ const Page = () => {
     const handleSaveText = (data) => {
         if(selectedBlockIndex !== ''){
             console.log(blocks[selectedBlockIndex]);
-            blocks[selectedBlockIndex].data.text = data.data.text
+            blocks[selectedBlockIndex].data = data.data
         } else{
         addBlock(data);
         }
@@ -126,7 +139,7 @@ const Page = () => {
         const newUrl = display.url === '/icons/comp.svg' ? '/icons/phone.svg' : '/icons/comp.svg';
         setDisplay({ className: newClassName, url: newUrl });
     };
-    /*СТООООП */
+    /*для обновления блоков */
     const [selectedBlockIndex, setSelectedBlockIndex] = useState('');
     const [selectedBlock, setSelectedBlock] = useState({});
 
@@ -134,7 +147,12 @@ const Page = () => {
     const openTextBlockModal = (index) => {
         setSelectedBlockIndex(index);
         setSelectedBlock(blocks[index]);
-        setShowText(true); // Открываем модальное окно
+        if (blocks[index].type == 'text'){
+            setShowText(true); // Открываем модальное окно текста
+        } else{
+            setShowUrl(true);
+        }
+    
     };
     return (
         <>
@@ -147,7 +165,7 @@ const Page = () => {
                             {block.type === 'text' ? (
                                 <BlockText data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             ) : (
-                                <BlockUrl  data={block.data} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                <BlockUrl  data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
                             )}
                         </div>
                     ))}
@@ -162,7 +180,7 @@ const Page = () => {
             </div>
 
             <ModalQr show={showQr} handleClose={handleCloseQr} updatePage={saveNewPage} data={pageData}/>
-            <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} />
+            <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex}/>
             <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex}/>
 
         </>

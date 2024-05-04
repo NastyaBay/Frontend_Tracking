@@ -61,7 +61,7 @@ const FeedBackForm = () => {
 
         console.log('save');
     }
-    console.log(formData)
+/*     console.log(formData) */
     const handleUpdateFormData = (newFormData=formData) => {
         const updateFormData = {
             ...newFormData,

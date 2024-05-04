@@ -19,12 +19,12 @@ const ModalText = ({ show, handleClose, handleSave, selectedBlock, selectedBlock
     };
 
     const handleSaveContent = () => {
+        
         const updateContent = { ...content, data: dataContent ? dataContent : {} }
         handleSave(updateContent);
         setContent({ type: "text", key: generateKey() })
     };
 
-    /*СТООООП */
 
     useEffect(() => {
         if (show && selectedBlockIndex !== null) {

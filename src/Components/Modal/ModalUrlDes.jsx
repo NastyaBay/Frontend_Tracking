@@ -5,7 +5,7 @@ import BlockUrl from '../Constructor/BlockUrl';
 import { useState, useEffect } from 'react';
 
 // дизайн модального окна ссылки
-const ModalUrlDes = ({ dataChange }) => {
+const ModalUrlDes = ({ dataChange, selectedBlock }) => {
     const initialTitleColor = '#222';
     const initialTextColor = '#222';
     const initialBgColor = '#C7D9FD';
@@ -29,6 +29,14 @@ const ModalUrlDes = ({ dataChange }) => {
         dataChange(event);
     };
 
+    useEffect(() => {
+        if (selectedBlock.data !== null) {
+            setTitleColor(selectedBlock.data?.colorTitle);
+            setTextColor(selectedBlock.data?.colorText);
+            setBgColor(selectedBlock.data?.colorBg);
+        }
+    }, [ selectedBlock]);
+
     return (
         <>
             <Modal.Body className='bodyUrl'>
@@ -42,7 +50,7 @@ const ModalUrlDes = ({ dataChange }) => {
                             className='blockColor'
                             type="color"
                             name='colorTitle'
-                            defaultValue={titleColor}
+                            defaultValue={selectedBlock.data?.colorTitle || titleColor }
                             onChange={handleTitleColorChange}
                         />
                     </Container>
@@ -52,7 +60,7 @@ const ModalUrlDes = ({ dataChange }) => {
                             className='blockColor'
                             type="color"
                             name='colorText'
-                            defaultValue={textColor}
+                            defaultValue={selectedBlock.data?.colorText || textColor }
                             onChange={handleTextColorChange}
                         />
                     </Container>
@@ -62,7 +70,7 @@ const ModalUrlDes = ({ dataChange }) => {
                             className='blockColor'
                             type="color"
                             name='colorBg'
-                            defaultValue={bgColor}
+                            defaultValue={selectedBlock.data?.colorBg || bgColor}
                             onChange={handleBgColorChange}
                         />
                     </Container>

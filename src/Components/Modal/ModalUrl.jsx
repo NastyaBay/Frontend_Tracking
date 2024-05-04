@@ -1,5 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import '../style/modal.css'
 import ButtonCast from '../OftenUsed/ButtonCast'
@@ -8,10 +8,10 @@ import { Tab, Tabs } from 'react-bootstrap';
 import ModalUrlCont from './ModalUrlCont';
 import ModalUrlDes from './ModalUrlDes';
 
-const ModalUrl = ({ show, handleClose, handleSave }) => {
+const ModalUrl = ({ show, handleClose, handleSave,  selectedBlock, selectedBlockIndex }) => {
     const [content, setContent] = useState({ type: "url", key: generateKey() });
     const [dataContent, setDataContent] = useState({});
-    
+
     const dataChange = (e) => {
         const { name, value } = e.target
         setDataContent(prevData => ({
@@ -20,11 +20,18 @@ const ModalUrl = ({ show, handleClose, handleSave }) => {
         }))
     }
     const handleSaveContent = () => {
-        const updateContent = { ...content, data: dataContent }
+        const updateContent = { ...content, data: dataContent ? dataContent : {}}
         handleSave(updateContent);
         setDataContent({});
         setContent({ type: "url", key: generateKey() });
     }
+
+    useEffect(() => {
+        if (show && selectedBlockIndex !== null) {
+            setDataContent(selectedBlock.data);
+        }
+    }, [show, selectedBlock, selectedBlockIndex]);
+
     return (
         <>
             <Modal
@@ -43,10 +50,10 @@ const ModalUrl = ({ show, handleClose, handleSave }) => {
                     id="uncontrolled-tab-example"
                 >
                     <Tab eventKey="content" title="Контент">
-                        <ModalUrlCont dataChange={dataChange} />
+                        <ModalUrlCont dataChange={dataChange} selectedBlock={selectedBlock} />
                     </Tab>
                     <Tab eventKey="design" title="Дизайн">
-                        <ModalUrlDes dataChange={dataChange} />
+                        <ModalUrlDes dataChange={dataChange} selectedBlock={selectedBlock}/>
                     </Tab>
                 </Tabs>
                 <Modal.Footer className='footerUrl'>
