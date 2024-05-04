@@ -1,17 +1,26 @@
-import { Form } from 'react-bootstrap'
+import { Form, CloseButton } from 'react-bootstrap'
 import '../style/questionAnswer.css'
-import ContainerCastForm from './ContainerCastForm'
-import ButtonUpDown from '../OftenUsed/ButtonUpDown'
 
-const QuestionAnswer = ({ onDelete, moveQuestionDown, moveQuestionUp }) => {
+const QuestionAnswer = ({ question, handleRemove, handleQuestionChange }) => {
+
     return (
         <>
-            <ContainerCastForm onDelete={onDelete} placeholderHead='Вопрос'>
-                <Form.Control disabled className='formAnswer textFont' placeholder='Развернутый ответ' />
-                <ButtonUpDown moveBlockUp={moveQuestionUp} moveBlockDown={moveQuestionDown} />
-            </ContainerCastForm>
+            <Form.Group className='intro-block-form'>
+                <CloseButton className='remove-block-form' onClick={handleRemove} />
+                <Form.Control
+                    className='title-form-control'
+                    placeholder='Текст вопроса'
+                    value={question.title_question}
+                    onChange={(e) => handleQuestionChange(question.id, e.target.value)}
+                />
+                <Form.Control
+                    disabled
+                    className='text-form-control text-form-border'
+                    placeholder='Развёрнутый ответ'
+                />
+            </Form.Group>
         </>
     )
 }
 
-export default QuestionAnswer
+export default QuestionAnswer;

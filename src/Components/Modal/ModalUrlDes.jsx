@@ -33,7 +33,7 @@ const ModalUrlDes = ({ dataChange }) => {
         <>
             <Modal.Body className='bodyUrl'>
                 <Container className='exempleDes'>
-                    <BlockUrl titleColor={titleColor} textColor={textColor} bgColor={bgColor} />
+                    <BlockUrl titleColor={titleColor} textColor={textColor} bgColor={bgColor} defaultTitle='Заголовок' defaultText='Текст' />
                 </Container>
                 <Container className='colorsBlock'>
                     <Container className='designColor'>

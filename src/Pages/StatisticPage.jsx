@@ -32,12 +32,15 @@ const StatisticPage = () => {
             console.error(error);
         }
     }
-
+    
+    const saveNewForm = async () => {
+        console.log('save');
+    }
 
     return (
         <>
             <div>
-                <Navibar name1='Конструктор' name2='Статистика' href1={`/page/${pageUrl.pageUrl}`} />
+                <Navibar name1='Конструктор' name2='Статистика' href1={`/page/${pageUrl.pageUrl}`} savePage={saveNewForm}/>
 
                 <Container className="bodyStaticticPage">
                     <ContainerCast className='blockStaticticPage'>

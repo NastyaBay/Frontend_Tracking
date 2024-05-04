@@ -1,6 +1,7 @@
-import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import { Container, Form } from 'react-bootstrap';
+import QRCode from 'qrcode.react';
+
 import '../style/modal.css'
 import ButtonCast from '../OftenUsed/ButtonCast'
 import FormCast from '../OftenUsed/FormCast'
@@ -11,7 +12,7 @@ import { useState } from 'react';
 const ModalQr = ({ show, handleClose, updatePage, data }) => {
     const [namePage, setNamePage] = useState('' || data.title);
 
-    const savePage = (publishedPage=data.published) => {
+    const savePage = (publishedPage = data.published) => {
         const newPageData = {
             ...data,
             title: namePage,
@@ -49,7 +50,7 @@ const ModalQr = ({ show, handleClose, updatePage, data }) => {
                             <h3>Ссылка</h3>
                             <Form.Control
                                 className='formHrefEdit'
-                                defaultValue={`http://localhost:8000/${data.page_link}`}
+                                defaultValue={`http://localhost:8000/${data?.page_link || data?.form_link}`}
                                 readOnly
                             />
                         </div>
@@ -58,7 +59,12 @@ const ModalQr = ({ show, handleClose, updatePage, data }) => {
                         <h3>QR-код</h3>
                         <div className='headForm2'>
                             <Container className='blockImgQr'>
-                                <img src='/qr.png' className='imgQr'></img>
+                                <QRCode
+                                    value={`http://localhost:8000/${data?.page_link || data?.form_link}`}
+                                    className='imgQr'
+                                    size={160}
+                                />
+                                {/* <img src='/qr.png' className='imgQr'></img> */}
                             </Container>
                             {/* <div className='btnBlock2'>
                                 <ButtonCast className='btnBlockQr' name={<img className='imgBtn' src='/icons/loading.svg'></img>} />
@@ -69,8 +75,9 @@ const ModalQr = ({ show, handleClose, updatePage, data }) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-
-                    <ButtonCast onClick={() => savePage(!data.published)} name={data.published ? 'Снять с публикации' : 'Опубликовать'} className='btn1' />
+                    {data?.page_link ?
+                        <ButtonCast onClick={() => savePage(!data.published)} name={data.published ? 'Снять с публикации' : 'Опубликовать'} className='btn1' /> : null
+                    }
                     <ButtonCast onClick={savePage} name='Сохранить' className='btn1' />
                 </Modal.Footer>
             </Modal>

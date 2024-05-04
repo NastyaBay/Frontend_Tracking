@@ -97,11 +97,8 @@
     border-radius: 0.625rem;
     height: 100%;
     resize: none;
+    padding: 1rem;
 }
-.bodyTextArea .formTextArea::placeholder {
-	padding: 1rem;
-}
-
 
 /* ОКНО ССЫЛКИ */
 

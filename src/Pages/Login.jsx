@@ -44,21 +44,23 @@ const Login = () => {
 
     return (
         <>
-            <ContainerCast className="blockLogin ">
-                <h1 className="textLogin ">Авторизация</h1>
-                <Form className="formGroups" onSubmit={handleLogin}>
-                    <Form.Group>
-                        <Form.Label >Почта</Form.Label>
-                        <FormCast type='email' placeholder='email@gmail.com' defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
-                    </Form.Group>
+            <div className='loginCenter'>
+                <ContainerCast className="blockLogin ">
+                    <h1 className="textLogin ">Авторизация</h1>
+                    <Form className="formGroups" onSubmit={handleLogin}>
+                        <Form.Group>
+                            <Form.Label >Почта</Form.Label>
+                            <FormCast type='email' placeholder='email@gmail.com' defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
+                        </Form.Group>
 
-                    <Form.Group className="formGroup">
-                        <Form.Label >Пароль</Form.Label>
-                        <FormCast type='password' placeholder='*********' defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
-                    </Form.Group>
-                    <ButtonCast name='Войти' type="submit" className='btnLogin' />
-                </Form>
-            </ContainerCast>
+                        <Form.Group className="formGroup">
+                            <Form.Label >Пароль</Form.Label>
+                            <FormCast type='password' placeholder='*********' defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
+                        </Form.Group>
+                        <ButtonCast name='Войти' type="submit" className='btnLogin' />
+                    </Form>
+                </ContainerCast>
+            </div>
         </>
     )
 }

@@ -37,20 +37,21 @@ body {
 	}
 }
 
-/* для компьютеров */
-@media (min-width: 1920px) {
-	body {
-		background-size: 100%;
-	};
-    *{
-        font-size: 20px;
-    }
-}
-
 @media (min-width: 1200px) {
 	
     *{
         font-size: 14px;
     }
 }
+
+/* для компьютеров */
+@media (min-width: 1910px) {
+	body {
+		background-size: 100%;
+	}
+    *{
+        font-size: 16px;
+    }
+}
+
 

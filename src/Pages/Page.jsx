@@ -118,7 +118,7 @@ const Page = () => {
         <>
             <Navibar name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage}/>
             <div className='bodyConstr'>
-                <ContainerCast className={display.className}>
+                <ContainerCast className={`phoneComp ${display.className}`}>
                     {blocks.map((block, index) => (
                         <div key={block.key}>
                             {block.type === 'text' ? (

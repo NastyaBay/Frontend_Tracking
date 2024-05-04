@@ -2,7 +2,8 @@
 .blockUrl{
     background-color: #C7D9FD;
     width: 18.75rem;
-    height: 5rem;
+    min-height: 5rem;
+    height: auto;
     border-radius: 0.625rem;
     display: flex;
     flex-direction: column;
@@ -16,6 +17,7 @@
     font-size: 0.875rem;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
+    overflow-wrap: break-word;
 }
 
 /* подзаголовок */
@@ -23,6 +25,7 @@
     font-size: 0.875rem;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
+    overflow-wrap: break-word;
 }
 
 /* расположение иконки закрытия */

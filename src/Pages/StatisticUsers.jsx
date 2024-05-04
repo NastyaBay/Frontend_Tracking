@@ -31,11 +31,13 @@ const StatisticUsers = () => {
             console.error(error);
         }
     }
-
+    
+    const saveNewForm = async () => {  
+    }
     return (
         <>
             <div>
-                <Navibar />
+                <Navibar savePage={saveNewForm}/>
 
                 <Container className="bodyStatictic" >
                     <ContainerCast className='blockStatictic'>

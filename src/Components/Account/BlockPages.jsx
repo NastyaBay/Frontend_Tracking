@@ -21,4 +21,4 @@ const BlockPages = (props) => {
     )
 }
 
-export default BlockPages
+export default BlockPages;

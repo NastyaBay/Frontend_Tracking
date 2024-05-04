@@ -10,16 +10,20 @@ import AnswerExpanded from "../Components/Forms/AnswerExpanded";
 import ModalQr from '../Components/Modal/ModalQr'
 
 import { authUser } from '../Components/Account/backend/LoginBack';
+import { getOneForm } from '../Components/Forms/backend/FormsBackend';
 
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 /*ответы на форму */
 const Answer = () => {
     const [showQr, setShowQr] = useState(false);
     const handleCloseQr = () => setShowQr(false);
     const handleShowQr = () => setShowQr(true);
+
     const navigate = useNavigate();
+    const urlForm = useParams();
+    const [formData, setFormData] = useState({});
 
     useEffect(() => {
         authenticated()
@@ -30,15 +34,22 @@ const Answer = () => {
             const response = await authUser()
             if (!response) {
                 navigate("/")
+            } else {
+                const response = await getOneForm(urlForm.formUrl);
+                setFormData(response)
             }
         } catch (error) {
             console.error(error);
         }
     }
 
+    const saveNewForm = async () => {
+        console.log('save');
+    }
+
     return (
         <>
-            <Navibar name1='Конструктор формы' name2='Ответы' name3='Ссылка' href1='/form' href3={handleShowQr} />
+            <Navibar name1='Конструктор формы' name2='Ответы' name3='Ссылка' href1={`/form/${urlForm.formUrl}`} href3={handleShowQr} savePage={saveNewForm}/>
 
             <Container className="bodyFormAnswer">
                 <ContainerCast className='blockFormAnswer '>
@@ -53,7 +64,7 @@ const Answer = () => {
 
                 </ContainerCast>
             </Container>
-            <ModalQr show={showQr} handleClose={handleCloseQr} />
+            <ModalQr show={showQr} handleClose={handleCloseQr} data={formData}/>
         </>
     )
 }

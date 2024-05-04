@@ -1,8 +1,11 @@
-import '../style/buttonPage.css'
-import BorderButton from './BorderButton'
-import { createPage } from './backend/PagesBack'
 import { useNavigate } from 'react-router-dom'
 
+import BorderButton from './BorderButton'
+
+import { createPage } from './backend/PagesBack'
+import { createForm } from '../Forms/backend/FormsBackend'
+
+import '../style/buttonPage.css'
 // кнопка страницы
 const ButtonPageAdd = (props) => {
     const navigate = useNavigate();
@@ -18,13 +21,19 @@ const ButtonPageAdd = (props) => {
             console.error(error);
         }
     }
-    const test2 = () =>{
-        
-        console.log('НЕok')
+    const handleNewForm = async () =>{
+        try{
+            const form_url = await createForm()
+            if (form_url){
+                navigate(`/form/${form_url}`)
+            }
+        } catch(error){
+            console.error(error);
+        }
     }
     return (
         <>
-            <BorderButton className='btnPageAdd' onClick={props.isPage ? handleNewPage : test2}>
+            <BorderButton className='btnPageAdd' onClick={props.isPage ? handleNewPage : handleNewForm}>
                 <img src='/icons/add.svg' alt='add'></img>
             </BorderButton>
         </>

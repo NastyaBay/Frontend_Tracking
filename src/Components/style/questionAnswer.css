@@ -4,7 +4,7 @@
     border-bottom: 1px dashed #4E7CC1;
 }
 
-.borderForm .btns{
+.borderForm .btns-up-down-group{
     position: absolute;
     right: -10%;
     top: 50%;

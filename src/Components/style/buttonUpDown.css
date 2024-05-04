@@ -1,4 +1,26 @@
 /* КНОПКА ПЕРЕМЕЩЕНИЯ БЛОКОВ */
+
+.btns-up-down-group {
+    position: absolute;
+    right: -10%;
+    top: 50%;
+
+    transform: translateY(-50%) rotate(90deg);
+    
+    margin: 0;
+}
+
+.blockText .btns-up-down-group,
+.blockUrl .btns-up-down-group {
+    position: absolute;
+    right: -30%;
+    top: 50%;
+
+    transform: translateY(-50%) rotate(90deg);
+
+    margin: 0;
+}
+
 /* полкнопки перемещения*/
 .btnUpDown{
     border: 0;
@@ -8,14 +30,10 @@
     background-color: #8EB4FF;
 }
 /* при наведении кнопка */
-.btns .btnUpDown:hover{
+.btns-up-down-group .btnUpDown:hover{
     background-color: #C7D9FD;
 }
 
-/* кнопки перемещения блоков */
-.btns{
-    transform: rotate(90deg);
-}
 /* картинка внутри кнопки */
 .iconsUpDown{
     width: 1.875rem;

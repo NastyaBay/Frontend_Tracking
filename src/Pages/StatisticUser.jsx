@@ -36,10 +36,14 @@ const StatisticUser = () => {
             window.location.href = '/statistic';
         }
     };
+
+    const saveNewForm = async () => {  
+    }
+
     return (
         <>
             <div>
-                <Navibar />
+                <Navibar savePage={saveNewForm}/>
                 <Container className="bodyStatictic" >
                     <ContainerCast className='blockStatictic'>
                         <Container className="headStatictic">

@@ -4,7 +4,7 @@ import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
 const ButtonUpDown = ({ moveBlockUp, moveBlockDown }) => {
     return (
         <>
-            <ToggleButtonGroup type="checkbox" className='btns'>
+            <ToggleButtonGroup type="checkbox" className='btns-up-down-group'>
                 <ToggleButton className='btnUpDown' onClick={moveBlockUp}>
                     <img className='iconsUpDown' src='/icons/up.svg'></img>
                 </ToggleButton>
