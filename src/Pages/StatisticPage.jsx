@@ -40,12 +40,12 @@ const StatisticPage = () => {
     return (
         <>
             <div>
-                <Navibar name1='Конструктор' name2='Статистика' href1={`/page/${pageUrl.pageUrl}`} savePage={saveNewForm}/>
+                <Navibar  activ2={'activ'} name1='Конструктор' name2='Статистика' href1={`/page/${pageUrl.pageUrl}`} savePage={saveNewForm}/>
 
                 <Container className="bodyStaticticPage">
                     <ContainerCast className='blockStaticticPage'>
                         <Container className="headStaticticPage">
-                            <h1>Статистика по странице</h1>
+                            <h1>Статистика по странице: Тест драйв</h1>
                         </Container>
                         <Container className="bodyBlockStaticticPage">
                             <ButtonsFilterDate />

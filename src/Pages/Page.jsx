@@ -55,10 +55,10 @@ const Page = () => {
         setSelectedBlock({});
     };
     const handleSaveUrl = (data) => {
-        if(selectedBlockIndex !== ''){
+        if (selectedBlockIndex !== '') {
             blocks[selectedBlockIndex].data = data.data
-        } else{
-        addBlock(data);
+        } else {
+            addBlock(data);
         }
         setShowUrl(false);
         setSelectedBlockIndex('');
@@ -75,11 +75,11 @@ const Page = () => {
     };
     const handleShowText = () => setShowText(true);
     const handleSaveText = (data) => {
-        if(selectedBlockIndex !== ''){
+        if (selectedBlockIndex !== '') {
             console.log(blocks[selectedBlockIndex]);
             blocks[selectedBlockIndex].data = data.data
-        } else{
-        addBlock(data);
+        } else {
+            addBlock(data);
         }
         setShowText(false);
         setSelectedBlockIndex('');
@@ -93,12 +93,12 @@ const Page = () => {
     const addBlock = async (dataContent) => {
         setBlocks(prevBlocks => {
             const newBlocks = [...prevBlocks, dataContent];
-            updatePage(pageUrl.pageUrl, pageData, newBlocks); 
+            updatePage(pageUrl.pageUrl, pageData, newBlocks);
             return newBlocks;
         });
     };
 
-    const saveNewPage = async (data=pageData, json=blocks) => {
+    const saveNewPage = async (data = pageData, json = blocks) => {
         try {
             const response = await updatePage(pageUrl.pageUrl, data, json);
             setPageData(response)
@@ -143,45 +143,52 @@ const Page = () => {
     const [selectedBlockIndex, setSelectedBlockIndex] = useState('');
     const [selectedBlock, setSelectedBlock] = useState({});
 
-// Функция для открытия модального окна с данными выбранного блока текста
+    // Функция для открытия модального окна с данными выбранного блока текста
     const openTextBlockModal = (index) => {
         setSelectedBlockIndex(index);
         setSelectedBlock(blocks[index]);
-        if (blocks[index].type == 'text'){
+        if (blocks[index].type == 'text') {
             setShowText(true); // Открываем модальное окно текста
-        } else{
+        } else {
             setShowUrl(true);
         }
-    
+
     };
     return (
         <>
-            <Navibar name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage}/>
+            <Navibar  activ1={'activ'} name1='Конструктор' name2='Статистика' href2={`/page/${pageUrl.pageUrl}/statistic`} savePage={saveNewPage} />
             <div className='bodyConstr'>
                 <ContainerCast className={` ${display.className}`}>
-                <div className='phoneComp'>
-                    {blocks.map((block, index) => (
-                        <div key={block.key} >
-                            {block.type === 'text' ? (
-                                <BlockText data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
-                            ) : (
-                                <BlockUrl  data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
-                            )}
-                        </div>
-                    ))}
-                </div>
+                    <div className='phoneComp'>
+                        {blocks.map((block, index) => (
+                            <div key={block.key} >
+                                {block.type === 'text' ? (
+                                    <BlockText data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                ) : (
+                                    <BlockUrl data={block.data} onClick={() => openTextBlockModal(index)} moveBlockUp={() => moveBlockUp(index)} moveBlockDown={() => moveBlockDown(index)} removeBlock={() => removeBlock(block.key)} />
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </ContainerCast>
                 <ContainerCast className="blockBtn">
-                    <ButtonCast onClick={handleShowQr} className='btn1' name={<img className='img1' src='/icons/qr_code.svg'></img>} />
-                    <ButtonCast onClick={handleShowText} className='btn2' name='Добавить текст' />
-                    <ButtonCast onClick={handleShowUrl} className='btn2' name='Добавить ссылку' />
-                    <ButtonCast onClick={toggleDisplay} className='btn1' name={<img className='img1' src={display.url}></img>} />
+                    <div className='btnsPageBlock'>
+                        <ButtonCast onClick={handleShowQr} className='btn1' name={<img className='img1' src='/icons/qr_code.svg'></img>} />
+                        <ButtonCast onClick={handleShowText} className='btn2' name='Добавить текст' />
+                        <ButtonCast onClick={handleShowUrl} className='btn2' name='Добавить ссылку' />
+                        <ButtonCast onClick={toggleDisplay} className='btn1' name={<img className='img1' src={display.url}></img>} />
+                    </div>
+                    <div>
+                        <hr />
+                        <Button className='btnSaveForm' onClick={() => saveNewPage()}>Сохранить</Button>
+                    </div>
                 </ContainerCast>
+
             </div>
 
-            <ModalQr show={showQr} handleClose={handleCloseQr} updatePage={saveNewPage} data={pageData}/>
-            <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex}/>
-            <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex}/>
+            <ModalQr show={showQr} handleClose={handleCloseQr} updatePage={saveNewPage} data={pageData} />
+            <ModalUrl show={showUrl} handleClose={handleCloseUrl} handleSave={handleSaveUrl} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex} />
+            <ModalText show={showText} handleClose={handleCloseText} handleSave={handleSaveText} selectedBlock={selectedBlock} selectedBlockIndex={selectedBlockIndex} />
 
         </>
     )

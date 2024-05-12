@@ -1,6 +1,6 @@
 /*фоновое изображение*/
 body {
-	background-image: url("/back.png");
+	background-image: url("/back.png") ;
 }
 
 /* блок для авторизации */

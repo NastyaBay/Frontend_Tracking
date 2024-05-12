@@ -13,12 +13,12 @@ const ModalQr = ({ show, handleClose, updatePage, data }) => {
     const [namePage, setNamePage] = useState('' || data.title);
 
     const savePage = (publishedPage = data.published) => {
+        console.log(data, data.published, publishedPage);
         const newPageData = {
             ...data,
             title: namePage,
             published: publishedPage
         }
-
         updatePage(newPageData);
         handleClose();
     };
@@ -78,7 +78,7 @@ const ModalQr = ({ show, handleClose, updatePage, data }) => {
                     {data?.page_link ?
                         <ButtonCast onClick={() => savePage(!data.published)} name={data.published ? 'Снять с публикации' : 'Опубликовать'} className='btn1' /> : null
                     }
-                    <ButtonCast onClick={savePage} name='Сохранить' className='btn1' />
+                    <ButtonCast onClick={() => savePage(data.published)} name='Сохранить' className='btn1' />
                 </Modal.Footer>
             </Modal>
         </>

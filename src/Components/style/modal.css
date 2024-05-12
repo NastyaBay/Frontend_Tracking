@@ -166,6 +166,8 @@
     background-color: #FFF;
     height: 6.625rem;
     padding: 0.8125rem ;
+    display: flex;
+    justify-content: center;
 }
 
 

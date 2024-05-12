@@ -16,9 +16,9 @@ const Navibar = (props) => {
             <Navbar className="navibar">
                 <Container className='navCont'>
                     <Nav >
-                        <Nav.Link href={props.href1}>{props.name1}</Nav.Link>
-                        <Nav.Link href={props.href2} className='h2-analytics'>{props.name2}</Nav.Link>
-                        <Nav.Link onClick={props.href3} className='h2-analytics'>{props.name3}</Nav.Link>
+                        <Nav.Link href={props.href1} className={props.activ1}>{props.name1}</Nav.Link>
+                        <Nav.Link href={props.href2} className={`h2-analytics ${props.activ2}`}>{props.name2}</Nav.Link>
+                        <Nav.Link onClick={props.href3} className={`h2-analytics ${props.activ3}`}>{props.name3}</Nav.Link>
                     </Nav>
                     <Nav>
                         <img src='/icons/avatar.svg'></img>

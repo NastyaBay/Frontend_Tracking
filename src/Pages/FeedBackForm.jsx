@@ -172,6 +172,7 @@ const FeedBackForm = () => {
         <>
             <Navibar
                 name1='Конструктор формы'
+                activ1={'activ'}
                 name2='Ответы'
                 name3='Ссылка'
                 href3={handleShowQr}

@@ -48,12 +48,14 @@
 
 /* блок кнопок добавления, публикации и перехода на компьютерную версию */
 .blockBtn{
-    height: 6.25rem;
+    height: 10rem;
     width: 35.625rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+/*     justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-evenly; */
 }
 
 /*кнопки боковые стили*/
@@ -72,6 +74,11 @@
     background-color: #8EB4FF;
     width: 9.875rem;
     padding: 0;
+}
+
+.btnsPageBlock {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /*прокрутка блоков*/

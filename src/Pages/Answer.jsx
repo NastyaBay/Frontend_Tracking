@@ -49,7 +49,7 @@ const Answer = () => {
 
     return (
         <>
-            <Navibar name1='Конструктор формы' name2='Ответы' name3='Ссылка' href1={`/form/${urlForm.formUrl}`} href3={handleShowQr} savePage={saveNewForm}/>
+            <Navibar activ2={'activ'} name1='Конструктор формы' name2='Ответы' name3='Ссылка' href1={`/form/${urlForm.formUrl}`} href3={handleShowQr} savePage={saveNewForm}/>
 
             <Container className="bodyFormAnswer">
                 <ContainerCast className='blockFormAnswer '>

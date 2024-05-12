@@ -43,8 +43,16 @@ const Login = () => {
     };
 
     return (
+
         <>
-            <div className='loginCenter'>
+            <style>
+                {`
+                    body {
+                        background-image: url("/back.png");
+                    }
+                `}
+            </style>
+            <div className='loginCenter login-page'>
                 <ContainerCast className="blockLogin ">
                     <h1 className="textLogin ">Авторизация</h1>
                     <Form className="formGroups" onSubmit={handleLogin}>
